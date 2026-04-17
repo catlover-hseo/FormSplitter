@@ -2,4 +2,3 @@ streamlit
 pandas
 beautifulsoup4
 reportlab
-lxml
