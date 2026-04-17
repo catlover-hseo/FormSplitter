@@ -141,6 +141,34 @@ def apply_custom_styles() -> None:
             margin-bottom: 0.8rem;
         }
 
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+            margin: 0.4rem 0 1rem 0;
+        }
+
+        .guide-step-card {
+            padding: 1rem 1rem 1.05rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(123, 92, 70, 0.14);
+            background: rgba(255, 252, 247, 0.72);
+            box-shadow: 0 10px 22px rgba(67, 41, 26, 0.04);
+        }
+
+        .guide-step-card strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--adeo-ink);
+            font-size: 0.98rem;
+        }
+
+        .guide-step-card span {
+            color: #5d4d43;
+            font-size: 0.92rem;
+            line-height: 1.62;
+        }
+
         div[data-testid="stFileUploader"],
         div[data-testid="stTextArea"],
         div[data-testid="stTextInput"] {
@@ -157,11 +185,78 @@ def apply_custom_styles() -> None:
             background: rgba(255,255,255,0.65);
         }
 
+        div[data-testid="stFileUploader"] button {
+            color: #2c211b !important;
+            background: #fff9f1 !important;
+            border: 1px solid rgba(123, 92, 70, 0.18) !important;
+            border-radius: 14px !important;
+            box-shadow: 0 8px 18px rgba(67, 41, 26, 0.08) !important;
+        }
+
+        div[data-testid="stFileUploader"] button:hover,
+        div[data-testid="stFileUploader"] button:focus {
+            color: #241913 !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(182, 81, 58, 0.28) !important;
+        }
+
+        div[data-testid="stFileUploader"] button svg {
+            fill: #b6513a !important;
+        }
+
+        div[data-testid="stFileUploader"] small,
+        div[data-testid="stFileUploader"] span,
+        div[data-testid="stFileUploader"] p {
+            color: #6b584b !important;
+        }
+
         div[data-testid="stRadio"] > div {
             background: rgba(255,252,247,0.72);
             border: 1px solid rgba(123, 92, 70, 0.16);
             border-radius: 18px;
             padding: 0.5rem 0.85rem;
+        }
+
+        div[data-testid="stRadio"] > label,
+        div[data-testid="stRadio"] > label p,
+        div[data-testid="stRadio"] [data-testid="stWidgetLabel"],
+        div[data-testid="stRadio"] [data-testid="stWidgetLabel"] p {
+            color: #6b584b !important;
+            -webkit-text-fill-color: #6b584b !important;
+            font-weight: 600 !important;
+        }
+
+        div[data-testid="stRadio"] label,
+        div[data-testid="stRadio"] label span,
+        div[data-testid="stRadio"] label p,
+        div[data-testid="stRadio"] legend,
+        div[data-testid="stRadio"] legend span,
+        div[data-testid="stRadio"] div[role="radiogroup"] label,
+        div[data-testid="stRadio"] div[role="radiogroup"] label span,
+        div[data-testid="stRadio"] div[role="radiogroup"] label p,
+        div[data-testid="stRadio"] [data-baseweb="radio"] *,
+        div[data-testid="stRadio"] [role="radiogroup"] * {
+            color: var(--adeo-ink) !important;
+            -webkit-text-fill-color: var(--adeo-ink) !important;
+            opacity: 1 !important;
+        }
+
+        div[data-testid="stRadio"] [data-baseweb="radio"] {
+            padding: 0.12rem 0.18rem;
+            border-radius: 999px;
+            transition: background-color 0.2s ease;
+        }
+
+        div[data-testid="stRadio"] [data-baseweb="radio"]:has(input:checked) {
+            background: rgba(182, 81, 58, 0.12);
+        }
+
+        div[data-testid="stRadio"] [data-baseweb="radio"]:has(input:checked) label,
+        div[data-testid="stRadio"] [data-baseweb="radio"]:has(input:checked) label span,
+        div[data-testid="stRadio"] [data-baseweb="radio"]:has(input:checked) label p {
+            color: #8f3f2f !important;
+            -webkit-text-fill-color: #8f3f2f !important;
+            font-weight: 700 !important;
         }
 
         div[data-testid="stMetric"] {
@@ -204,11 +299,33 @@ def apply_custom_styles() -> None:
             border-radius: 18px;
         }
 
-        details {
+        div[data-testid="stExpander"] details {
             background: rgba(255, 252, 248, 0.8);
             border-radius: 18px;
             border: 1px solid rgba(123, 92, 70, 0.12);
             padding: 0.3rem 0.4rem;
+        }
+
+        div[data-testid="stExpander"] summary {
+            border-radius: 14px;
+            background: rgba(255, 252, 247, 0.92) !important;
+            color: var(--adeo-ink) !important;
+            transition: background-color 0.2s ease;
+        }
+
+        div[data-testid="stExpander"] summary:hover {
+            background: rgba(255, 255, 255, 0.98) !important;
+        }
+
+        div[data-testid="stExpander"] summary *,
+        div[data-testid="stExpander"] summary p,
+        div[data-testid="stExpander"] summary span {
+            color: var(--adeo-ink) !important;
+            font-weight: 600 !important;
+        }
+
+        div[data-testid="stExpander"] summary svg {
+            fill: #b6513a !important;
         }
 
         @media (max-width: 900px) {
@@ -217,6 +334,10 @@ def apply_custom_styles() -> None:
             }
 
             .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-steps {
                 grid-template-columns: 1fr;
             }
         }
@@ -263,12 +384,66 @@ def render_guide() -> None:
     st.markdown(
         """
         <div class="subnote">
-            처음 쓰는 경우에는 아래 순서만 기억하시면 됩니다.
-            <strong>명단 준비 → CSV 업로드 → 파일명 날짜 확인 → PDF 생성</strong> 순서입니다.
+            컴퓨터가 익숙하지 않아도 괜찮습니다. 아래 순서대로만 하시면 됩니다.
+        </div>
+        <div class="guide-steps">
+            <div class="guide-step-card">
+                <strong>1. 구글 폼 화면 열기</strong>
+                <span>평가에 사용한 구글 폼과, 응답이 쌓여 있는 구글 폼 응답 화면을 준비합니다.</span>
+            </div>
+            <div class="guide-step-card">
+                <strong>2. HTML / CSV 파일 받기</strong>
+                <span>폼 화면은 HTML로 저장하고, 응답 결과는 CSV로 내려받으면 됩니다.</span>
+            </div>
+            <div class="guide-step-card">
+                <strong>3. 앱에 업로드 후 생성</strong>
+                <span>파일을 올리고 날짜를 확인한 다음 PDF 자동 생성 버튼을 누르면 끝입니다.</span>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+    with st.expander("HTML 파일은 어떻게 저장하나요?"):
+        st.markdown(
+            """
+            1. 연주자 명단이 보이는 구글 폼 화면을 엽니다.
+            2. 브라우저에서 `Cmd + S` 또는 `Ctrl + S`를 누릅니다.
+            3. 저장 형식에서 `웹 페이지, 전체` 또는 `HTML`을 선택합니다.
+            4. 바탕화면이나 다운로드 폴더에 저장합니다.
+            5. 이 앱의 `HTML 파일(평가지 사본)` 칸에 방금 저장한 파일을 올리면 됩니다.
+
+            참고:
+            - HTML은 `연주자 순서`와 `연주자 이름`을 자동으로 읽을 때 사용합니다.
+            - HTML 저장이 어렵다면 `명단 직접 입력` 모드로 바꿔서 이름만 붙여넣어도 됩니다.
+            """
+        )
+
+    with st.expander("CSV 파일은 구글 폼 응답에서 어떻게 받나요?"):
+        st.markdown(
+            """
+            1. 구글 폼 편집 화면에서 상단의 `응답` 탭을 누릅니다.
+            2. 오른쪽 위 `︙` 메뉴를 누릅니다.
+            3. `응답 다운로드(.csv)`를 선택합니다.
+            4. 내려받은 파일을 이 앱의 `CSV 파일(응답 결과)` 칸에 올리면 됩니다.
+
+            응답이 이미 구글 시트로 연결된 경우:
+            1. 연결된 구글 시트를 엽니다.
+            2. `파일 → 다운로드 → 쉼표로 구분된 값(.csv, 현재 시트)`를 누릅니다.
+            """
+        )
+
+    with st.expander("처음 쓰는 사람을 위한 가장 쉬운 사용 순서"):
+        st.markdown(
+            """
+            1. 구글 폼 화면을 HTML로 저장합니다.
+            2. 구글 폼 `응답` 탭에서 CSV를 다운로드합니다.
+            3. 이 앱에서 `HTML에서 자동 추출`을 그대로 두고 두 파일을 업로드합니다.
+            4. 화면에 표시된 `연주자 수`, `CSV 응답 행`, `연주자 세트`를 가볍게 확인합니다.
+            5. 파일명 날짜가 맞는지 보고 `PDF 자동 생성 시작`을 누릅니다.
+            6. 생성이 끝나면 `PDF ZIP 다운로드`를 누릅니다.
+            """
+        )
 
     with st.expander("왜 CSV가 필수인가요?"):
         st.markdown(
